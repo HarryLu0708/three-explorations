@@ -4,17 +4,25 @@ var scene, camera, renderer;
 var sun, mercury, venus, earth, moon, mars, jupiter, saturn, uranus, neptune;
 const clock = new THREE.Clock();
 
+var cursor = {x:0,y:0};
+const size = {width:window.innerWidth,height:window.innerHeight};
+
 init();
 aid_design();
 setup();
 animate();
 
+window.addEventListener("mousemove", (event)=>{
+    cursor.x = event.clientX / size.width - 0.5;
+    cursor.y = event.clientY / size.height - 0.5;
+});
+
 function init(){
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 2000);
     camera.position.z = 500;
-    camera.position.y = 700;
-    camera.rotation.x -= Math.PI * 0.25;
+    //camera.position.y = 700;
+    //camera.rotation.x -= Math.PI * 0.25;
     renderer = new THREE.WebGLRenderer();
 
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -24,6 +32,12 @@ function init(){
 
 function animate(){
     requestAnimationFrame(animate);
+
+    camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 500;
+    camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 500;
+    camera.position.y = (cursor.y * 500);
+    camera.lookAt(sun.position);
+
 
     planet_movement(earth, sun, 200, clock.getElapsedTime());
     planet_movement(moon, earth, 50, clock.getElapsedTime() * 2);
