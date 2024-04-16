@@ -1,12 +1,13 @@
 import * as THREE from "three";
 import { ARButton } from "three/examples/jsm/Addons.js";
+import { VRButton } from "three/examples/jsm/Addons.js";
 
 var camera, renderer, scene;
 
 console.log(ARButton);
 init();
 generate();
-animate();
+//animate();
 
 function init(){
     camera = new THREE.PerspectiveCamera(
@@ -25,14 +26,13 @@ function init(){
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.xr.enabled = true;
     document.body.appendChild(renderer.domElement);
-    const btn = ARButton.createButton(renderer);
+    const btn = VRButton.createButton(renderer);
     document.body.appendChild(btn);
 }
 
-function animate(){
-    requestAnimationFrame(animate);
+renderer.setAnimationLoop(function(){
     renderer.render(scene, camera);
-}
+});
 
 function generate(){
     var geo = new THREE.BoxGeometry(2,2,2);
