@@ -1,7 +1,7 @@
 {
     "rewrites": [
-      { "source": "/", "destination": "/index.html" },
-      { "source": "/webXR", "destination": "/webXR_demos/demo.html" }
+      { "source": "/", "destination": "./index.html" },
+      { "source": "/webXR", "destination": "./webXR_demos/demo.html" }
     ]
   }
   
