@@ -10,6 +10,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "build": "node -v && npm -v && npm clean-install && vite build",
   "dependencies": {
     "lil-gui": "^0.19.2",
     "three": "^0.163.0",
