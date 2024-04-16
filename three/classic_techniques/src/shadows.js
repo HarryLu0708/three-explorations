@@ -31,5 +31,4 @@ function animate(){
 
 function generate_scene(){
     var geo_sphere = new THREE.SphereGeometry(5);
-    var mat = new THREE.
 }
